@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
         achievementManager.gameManager = this;
         achievementManager.StartCoroutine(achievementManager.CheckKillAmount());
         achievementManager.StartCoroutine(achievementManager.CheckComboAchievements());
+        GameObject.FindGameObjectWithTag("ShipInitializer").GetComponent<ShipInitializer>().ChangeMaterials();
+
     }
 
     public void OnEndGame()

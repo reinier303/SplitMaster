@@ -6,25 +6,47 @@ using System.IO;
 public class ShipInitializer : MonoBehaviour
 {
     private ScriptableShip ship;
+    private GameObject Player;
+
+    private void Awake()
+    {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("ShipInitializer");
+
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    public void SetShip(ScriptableShip newShip)
+    {
+        ship = newShip;
+    }
 
     // Start is called before the first frame update
-    private void Start()
+    public void ChangeMaterials()
     {
-        //FIX BY PUTTING IN SHIP NAME FROM SHIPDATABASE
-        ship = GameObject.FindGameObjectWithTag("ShipDataBase").GetComponent<ShipDataBase>().Ships["asdasd"];
-        SetMaterials();
+        Player = GameObject.FindGameObjectWithTag("Player");
+        if(Player != null)
+        {
+            SetMaterials();
+        }
     }
 
     private void SetMaterials()
     {
-        SpriteRenderer shipRenderer = GetComponent<SpriteRenderer>();
-        SpriteRenderer indicatorRenderer = transform.GetChild(1).GetComponent<SpriteRenderer>();
-
-        shipRenderer.material = ship.ShipMaterial;
-        indicatorRenderer.material = ship.IndicatorMaterial;
+        SpriteRenderer shipRenderer = Player.GetComponent<SpriteRenderer>();
+        SpriteRenderer indicatorRenderer = Player.transform.GetChild(1).GetComponent<SpriteRenderer>();
 
         shipRenderer.sprite = ship.ShipSprite;
+        shipRenderer.color = ship.ShipColor;
+        shipRenderer.material = ship.ShipMaterial;
+
         indicatorRenderer.sprite = ship.IndicatorSprite;
+        indicatorRenderer.color = ship.IndicatorColor;
+        indicatorRenderer.material = ship.IndicatorMaterial;
     }
 }
 

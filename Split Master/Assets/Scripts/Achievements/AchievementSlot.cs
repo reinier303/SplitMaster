@@ -32,7 +32,6 @@ public class AchievementSlot : MonoBehaviour, IPointerEnterHandler, IPointerExit
             if (achievementManager.achievementData.AchievementUnlockStatus[achievement.AchievementName] == false)
             {
                 LockAchievement();
-                Debug.Log(achievement.AchievementName);
             }
         }
         else

@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Square
   - PlayerInitializer
-  - ShipDataBase
+  - ShipInitializer
   - AchievementManager
   layers:
   - Default

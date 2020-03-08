@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Ship", order = 2)]
 public class ScriptableShip : ScriptableObject
 {
+    public int IndexNumber;
     public string ShipName;
     public Color ShipColor;
     public Color IndicatorColor;

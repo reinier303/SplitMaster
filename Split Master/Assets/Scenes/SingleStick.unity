@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2207,7 +2207,6 @@ GameObject:
   - component: {fileID: 746141131}
   - component: {fileID: 746141129}
   - component: {fileID: 746141128}
-  - component: {fileID: 746141132}
   - component: {fileID: 746141133}
   m_Layer: 9
   m_Name: Player
@@ -2354,7 +2353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc03c61709590b4891b81c39354b21a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireCooldown: 0.3
+  fireCooldown: 0.4
 --- !u!114 &746141131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2365,18 +2364,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c56097d84663c424897cb52f18dc3fc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &746141132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 746141124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9ca54993e673594db97b985f4cd0ec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &746141133
@@ -4298,7 +4285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1779256868
 RectTransform:
   m_ObjectHideFlags: 0

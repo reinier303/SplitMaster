@@ -1,10 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using UnityEditor;
+using System.Linq;
+using UnityEngine.UI;
 
 public class ShipSelector : MonoBehaviour
 {
@@ -12,19 +10,66 @@ public class ShipSelector : MonoBehaviour
     [SerializeField]
     private float lerpTime , disappearTime;
     private bool running;
-    private List<GameObject> ships = new List<GameObject>();
+    private List<ScriptableShip> ships = new List<ScriptableShip>();
     [SerializeField]
     private int currentShip;
     [SerializeField]
     private GameObject leftButton, rightButton;
     [SerializeField]
     private ShipDataBase shipDataBase;
+    [SerializeField]
+    private GameObject MenuShipPrefab;
+    public Text UnlockText;
+    private ShipInitializer shipInitializer;
 
+    private void Awake()
+    {
+        //Get Ships from Resources folder
+        Object[] scriptableShips = Resources.LoadAll("Ships", typeof(ScriptableShip));
+        foreach (ScriptableShip ship in scriptableShips)
+        {
+            if (ships.Contains(ship))
+            {
+                continue;
+            }
+            //Check if pool info is filled.
+            if (ship.ShipName != null && ship.ShipSprite != null && ship.IndicatorSprite != null && ship.ShipMaterial != null && ship.IndicatorMaterial != null)
+            {
+                ships.Add(ship);
+            }
+            else
+            {
+                Debug.LogWarning("Achievement: " + ship.ShipName + " is missing some information. \n Please go back to Resources/Ships and fill in the information correctly");
+            }
+        }
+
+        ships = ships.OrderBy(x => x.IndexNumber).ToList();
+
+        //Put ships in menu
+        int shipNumber = 0;
+
+        foreach (ScriptableShip ship in ships)
+        {
+            Vector2 position = new Vector2(480 * shipNumber, 0);
+            print(position);
+            GameObject shipObject = Instantiate(MenuShipPrefab, transform);
+            shipObject.transform.localPosition = position;
+            MenuShip menuShipScript = shipObject.GetComponent<MenuShip>();
+            menuShipScript.ship = ship;
+            menuShipScript.Initialize();
+            shipNumber++;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
+        shipInitializer = GameObject.FindGameObjectWithTag("ShipInitializer").GetComponent<ShipInitializer>(); ;
+
+        currentShip = PlayerPrefs.GetInt("ShipIndex");
         rect = GetComponent<RectTransform>();
         running = false;
+
+        rect.anchoredPosition = new Vector2((currentShip * -480), rect.anchoredPosition.y);
 
         if (rect.anchoredPosition.x == 0)
         {
@@ -50,8 +95,18 @@ public class ShipSelector : MonoBehaviour
             {
                 currentShip--;
             }
-            PlayerPrefs.SetInt("ShipNumber", currentShip);
             StartCoroutine(lerpPosition(rect.anchoredPosition, newPos, lerpTime));
+        }
+        ScriptableAchievement shipAchievement = ships[currentShip].Achievement;
+        if (shipAchievement != null && !shipAchievement.Unlocked)
+        {
+            UnlockText.gameObject.SetActive(true);
+            UnlockText.text = "You must achieve: " + ships[currentShip].Achievement.AchievementName + " to unlock this skin";
+        }
+        else
+        {
+            UnlockText.gameObject.SetActive(false);
+
         }
     }
 
@@ -83,5 +138,11 @@ public class ShipSelector : MonoBehaviour
             rightButton.SetActive(true);
         }
         running = false;
+    }
+
+    public void SetShip()
+    {
+        PlayerPrefs.SetInt("ShipIndex", currentShip);
+        shipInitializer.SetShip(ships[currentShip]);
     }
 }
