@@ -5,16 +5,15 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    //Instance
     public static GameManager Instance;
+
+    //General
     [HideInInspector]
     public float SquaresAlive;
-
     public float Score;
-
     public float scoreMultiplier;
-
     private Coroutine currentTimer;
-
     private bool won;
 
     //Combo
@@ -33,22 +32,21 @@ public class GameManager : MonoBehaviour
     GameObject finalScore;
     [SerializeField]
     public Text scoreText;
-
     private float currentScoreDisplay;
 
     //Achievements
     public int killCount;
-
     [HideInInspector]
-    public AchievementManager achievementManager;
-    
+    public AchievementManager achievementManager; 
     [HideInInspector]
     public GameObject AchievementPopUp;
-
     [HideInInspector]
     public string difficulty;
-
     public int MaxCombo;
+
+    //PauseMenu
+    [SerializeField]
+    private GameObject pauseMenu;
 
     private void Awake()
     {
@@ -205,13 +203,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void PauseGame()
+    public void PauseGame()
     {
+        pauseMenu.SetActive(true);
         Time.timeScale = 0;
     }
 
-    private void UnPauseGame()
+    public void UnPauseGame()
     {
+        pauseMenu.SetActive(false);
         Time.timeScale = 1;
     }
 }

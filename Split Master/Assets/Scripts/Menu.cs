@@ -11,13 +11,13 @@ public class Menu : MonoBehaviour
     [SerializeField]
     private GameObject LoadingScreen, MenuObject;
 
-    public void LoadScene()
+    public void LoadScene(int scene = 0)
     {
         if(SceneManager.GetActiveScene().buildIndex == 0)
         {
             MenuObject.SetActive(false);
         }
         LoadingScreen.SetActive(true);
-        SceneManager.LoadSceneAsync(gameScene);
+        SceneManager.LoadSceneAsync(scene);
     }
 }
