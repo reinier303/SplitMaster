@@ -20,7 +20,7 @@ public class MenuButton : MonoBehaviour
     public void GoToDifficulty()
     {
         SaveDifficulty();
-        GetComponentInParent<Menu>().LoadScene();
+        GetComponentInParent<Menu>().LoadScene(1);
     }
 
     private void SaveDifficulty()

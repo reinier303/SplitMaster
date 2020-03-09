@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     //PauseMenu
     [SerializeField]
     private GameObject pauseMenu;
+    public bool isPaused;
 
     private void Awake()
     {
@@ -206,12 +207,14 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
+        isPaused = true;
         Time.timeScale = 0;
     }
 
     public void UnPauseGame()
     {
         pauseMenu.SetActive(false);
+        isPaused = false;
         Time.timeScale = 1;
     }
 }

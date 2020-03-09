@@ -6,13 +6,15 @@ using UnityEngine.EventSystems;
 using System;
 using UnityEngine.Events;
 
-public class ButtonVisualFeedback : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerExitHandler, IPointerUpHandler
+public class UIButtonR : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPointerExitHandler, IPointerUpHandler
 {
     private Text textComponent;
     private Image imageComponent;
     [SerializeField]
     public UnityEvent OnPointerDownEvent;
     public Material HoverMaterial, DownMaterial, BaseMaterial;
+    public AudioClip HoverSound, ClickSound;
+    private AudioSource audioSource;
 
     private bool image;
 
@@ -21,6 +23,7 @@ public class ButtonVisualFeedback : MonoBehaviour, IPointerEnterHandler, IPointe
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         textComponent = GetComponent<Text>();
         image = false;
         if (textComponent == null)
@@ -40,6 +43,8 @@ public class ButtonVisualFeedback : MonoBehaviour, IPointerEnterHandler, IPointe
         {
             imageComponent.material = DownMaterial;
         }
+        audioSource.clip = ClickSound;
+        audioSource.Play();
         OnPointerDownEvent.Invoke();
     }
 
@@ -64,7 +69,9 @@ public class ButtonVisualFeedback : MonoBehaviour, IPointerEnterHandler, IPointe
         else
         {
             imageComponent.material = HoverMaterial;
-        }  
+        }
+        audioSource.clip = HoverSound;
+        audioSource.Play();
     }
 
     public void OnPointerExit(PointerEventData eventData)

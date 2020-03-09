@@ -13,6 +13,7 @@ public class AchievementSlot : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private Image background;
     [HideInInspector]
     public AchievementManager achievementManager;
+    private AudioSource audioSource;
 
 
     public void Initialize()
@@ -22,6 +23,7 @@ public class AchievementSlot : MonoBehaviour, IPointerEnterHandler, IPointerExit
         achievementTitle = infoPanel.transform.GetChild(0).GetComponent<Text>();
         achievementDescription = infoPanel.transform.GetChild(1).GetComponent<Text>();
         background = GetComponent<Image>();
+        audioSource = GetComponent<AudioSource>();
         CheckUnlock();
     }
 
@@ -50,6 +52,7 @@ public class AchievementSlot : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         achievementTitle.text = achievement.AchievementName;
         achievementDescription.text = achievement.Description;
+        audioSource.Play();
         infoPanel.SetActive(true);
     }
 
