@@ -18,7 +18,6 @@ public class AchievementManager : MonoBehaviour
     private List<ScriptableAchievement> DifficultyAchievements = new List<ScriptableAchievement>();
     private List<ScriptableAchievement> ComboAchievements = new List<ScriptableAchievement>();
 
-
     //Achievement Data
     public AchievementData achievementData;
 

@@ -16,11 +16,11 @@ public class ShipSelector : MonoBehaviour
     [SerializeField]
     private GameObject leftButton, rightButton;
     [SerializeField]
-    private ShipDataBase shipDataBase;
-    [SerializeField]
     private GameObject MenuShipPrefab;
     public Text UnlockText;
+    public GameObject SetShipButton;
     private ShipInitializer shipInitializer;
+    private AchievementManager achievementManager;
 
     private void Awake()
     {
@@ -51,7 +51,6 @@ public class ShipSelector : MonoBehaviour
         foreach (ScriptableShip ship in ships)
         {
             Vector2 position = new Vector2(480 * shipNumber, 0);
-            print(position);
             GameObject shipObject = Instantiate(MenuShipPrefab, transform);
             shipObject.transform.localPosition = position;
             MenuShip menuShipScript = shipObject.GetComponent<MenuShip>();
@@ -63,9 +62,11 @@ public class ShipSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shipInitializer = GameObject.FindGameObjectWithTag("ShipInitializer").GetComponent<ShipInitializer>(); ;
+        shipInitializer = GameObject.FindGameObjectWithTag("ShipInitializer").GetComponent<ShipInitializer>();
+        achievementManager = GameObject.FindGameObjectWithTag("AchievementManager").GetComponent<AchievementManager>();
 
         currentShip = PlayerPrefs.GetInt("ShipIndex");
+        SetShip();
         rect = GetComponent<RectTransform>();
         running = false;
 
@@ -98,15 +99,16 @@ public class ShipSelector : MonoBehaviour
             StartCoroutine(lerpPosition(rect.anchoredPosition, newPos, lerpTime));
         }
         ScriptableAchievement shipAchievement = ships[currentShip].Achievement;
-        if (shipAchievement != null && !shipAchievement.Unlocked)
+        if (shipAchievement != null && !achievementManager.achievementData.AchievementUnlockStatus[shipAchievement.AchievementName])
         {
             UnlockText.gameObject.SetActive(true);
+            SetShipButton.SetActive(false);
             UnlockText.text = "You must achieve: " + ships[currentShip].Achievement.AchievementName + " to unlock this skin";
         }
         else
         {
             UnlockText.gameObject.SetActive(false);
-
+            SetShipButton.SetActive(true);
         }
     }
 

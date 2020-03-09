@@ -189,4 +189,29 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetFloat("Highscore", Score);
         }
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(Time.timeScale == 1)
+            {
+                PauseGame();
+            }
+            else
+            {
+                UnPauseGame();
+            }
+        }
+    }
+
+    private void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    private void UnPauseGame()
+    {
+        Time.timeScale = 1;
+    }
 }
