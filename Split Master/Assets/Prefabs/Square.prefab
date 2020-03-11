@@ -141,6 +141,11 @@ MonoBehaviour:
   SplitAmount: 2
   SplitCount: 4
   firstSquare: 1
+  newColor: {x: 0, y: 0, z: 0, w: 0}
+  newColor2:
+    serializedVersion: 2
+    rgba: 0
+  powerUpChance: 5
 --- !u!50 &8330443176987522789
 Rigidbody2D:
   serializedVersion: 4
@@ -169,11 +174,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6139968110415218625}
     m_Modifications:
-    - target: {fileID: 7085668031028644304, guid: 3cad4cb08630044429d3b184451b1878,
-        type: 3}
-      propertyPath: m_Name
-      value: SquareTrail
-      objectReference: {fileID: 0}
     - target: {fileID: 7085668031028644301, guid: 3cad4cb08630044429d3b184451b1878,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -228,6 +228,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085668031028644304, guid: 3cad4cb08630044429d3b184451b1878,
+        type: 3}
+      propertyPath: m_Name
+      value: SquareTrail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cad4cb08630044429d3b184451b1878, type: 3}

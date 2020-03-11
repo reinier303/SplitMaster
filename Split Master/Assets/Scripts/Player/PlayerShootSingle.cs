@@ -12,11 +12,17 @@ public class PlayerShootSingle : MonoBehaviour
     [SerializeField]
     private float fireCooldown;
     private bool canFire;
+    private bool tripleFire;
+    private float spreadAngle;
+
+
+    private float baseFireCooldown;
 
     private void Start()
     {
         objectPooler = InstanceManager<ObjectPooler>.GetInstance("ObjectPooler");
         canFire = true;
+        baseFireCooldown = fireCooldown;
     }
 
     // Update is called once per frame
@@ -41,11 +47,34 @@ public class PlayerShootSingle : MonoBehaviour
         if(canFire)
         {
             canFire = false;
-            objectPooler.SpawnFromPool("Bullet", transform.position + transform.up * 0.75f, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z));
+            if(tripleFire)
+            {
+                for(int i = 0; i < 3; i++)
+                {
+                    objectPooler.SpawnFromPool("Bullet", transform.position + transform.up * 0.75f, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, (transform.eulerAngles.z - spreadAngle + (i * spreadAngle))));
+                }
+            }
+            else
+            {
+                objectPooler.SpawnFromPool("Bullet", transform.position + transform.up * 0.75f, Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z));
+            }
             yield return new WaitForSeconds(fireCooldown);
             canFire = true;
         }
     }
 
+    public IEnumerator FireRateUp(float duration, float multiplier)
+    {
+        fireCooldown = baseFireCooldown / multiplier;
+        yield return new WaitForSeconds(duration);
+        fireCooldown = baseFireCooldown;
+    }
 
+    public IEnumerator TripleFire(float duration, float spread)
+    {
+        spreadAngle = spread;
+        tripleFire = true;
+        yield return new WaitForSeconds(duration);
+        tripleFire = false;
+    }
 }

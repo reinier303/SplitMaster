@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Square : MonoBehaviour
 {
+    //General
     [SerializeField]
     private float rotationSpeed;
     [SerializeField]
@@ -14,31 +15,36 @@ public class Square : MonoBehaviour
     private float speedX;
     private float speedY;
 
+    private List<Vector2> Directions = new List<Vector2>();
+
+
+    //Script References
     ObjectPooler objectPooler;
     GameManager gameManager;
+    PowerUpManager powerUpManager;
 
-
+    //Difficulty related
     public float SplitAmount;
     public float SplitCount;
 
+    //Checks
     [SerializeField]
     private bool firstSquare;
     private bool movingStarted;
     private bool checkRunning;
 
-    private List<Vector2> Directions = new List<Vector2>();
-
+    //ParticleEffectColors
     public Vector4 newColor;
     public Color32 newColor2;
 
-    private void Awake()
-    {
-    }
+    //PowerUps
+    public float powerUpChance;
 
     private void Start()
     {
         gameManager = GameManager.Instance;
         objectPooler = InstanceManager<ObjectPooler>.GetInstance("ObjectPooler");
+        powerUpManager = PowerUpManager.Instance;
         AddDirections();
         if(firstSquare)
         {
@@ -151,11 +157,16 @@ public class Square : MonoBehaviour
 
     public void Die()
     {
+        //PartiicleEffect
         GameObject particleObject =  objectPooler.SpawnFromPool("Explosion", transform.position, Quaternion.identity);
         particleObject.transform.localScale = transform.localScale * 1.25f;
         Material particleSystemMaterial = particleObject.GetComponent<ParticleSystem>().GetComponent<ParticleSystemRenderer>().material;
         particleSystemMaterial.SetColor("_Color", newColor2);
         particleSystemMaterial.SetVector("_EmissionColor", newColor * 0.017f);
+
+        //PowerUp
+        powerUpManager.SpawnPowerUp(powerUpChance, transform.position);
+
         gameManager.AddScore();
         if(SplitCount > 0)
         {

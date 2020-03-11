@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public float scoreMultiplier;
     private Coroutine currentTimer;
     private bool won;
+    public GameObject Player;
+    public float totalAmount;
 
     //Combo
     [SerializeField]

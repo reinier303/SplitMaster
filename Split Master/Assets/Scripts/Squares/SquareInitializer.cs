@@ -25,9 +25,14 @@ public class SquareInitializer : MonoBehaviour
         squareAmount = data.GetAmount();
         splitAmount = data.GetSplitAmount();
         splitCount = data.GetSplitCount();
-        GameManager.Instance.SquaresAlive = squareAmount;
-        GameManager.Instance.difficulty = data.GetName();
 
+        GameManager gameManager = GameManager.Instance;
+
+        gameManager.SquaresAlive = squareAmount;
+        gameManager.difficulty = data.GetName();
+        gameManager.totalAmount = squareAmount * Mathf.Pow(splitAmount, splitCount);
+
+        Debug.Log(gameManager.totalAmount);
         if (data.GetTutorial())
         {
             EnableTutorial();
