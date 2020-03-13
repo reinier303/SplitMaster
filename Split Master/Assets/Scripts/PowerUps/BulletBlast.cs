@@ -42,7 +42,6 @@ public class BulletBlast : PowerUp
         float distance = Vector2.Distance(transform.position, Player.transform.position);
         if (distance <= PushDistance)
         {
-            Debug.Log("oioioi");
             float x = Player.transform.position.x - transform.position.x;
             float y = Player.transform.position.y - transform.position.y;
             Vector3 newPosition = new Vector3(x, y, 0) * Time.deltaTime;

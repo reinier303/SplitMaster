@@ -16,7 +16,9 @@ public class Square : MonoBehaviour
     private float speedY;
 
     private List<Vector2> Directions = new List<Vector2>();
+    public bool check;
 
+    Collider2D collider2D;
 
     //Script References
     ObjectPooler objectPooler;
@@ -40,11 +42,16 @@ public class Square : MonoBehaviour
     //PowerUps
     public float powerUpChance;
 
+    //ScreenShake
+    CameraShake shakeScript;
+
     private void Start()
     {
         gameManager = GameManager.Instance;
         objectPooler = InstanceManager<ObjectPooler>.GetInstance("ObjectPooler");
         powerUpManager = PowerUpManager.Instance;
+        shakeScript = gameManager.transform.GetComponent<CameraShake>();
+        collider2D = GetComponent<Collider2D>();
         AddDirections();
         if(firstSquare)
         {
@@ -164,6 +171,9 @@ public class Square : MonoBehaviour
         particleSystemMaterial.SetColor("_Color", newColor2);
         particleSystemMaterial.SetVector("_EmissionColor", newColor * 0.017f);
 
+        //Screenshake
+        shakeScript.StartCoroutine(shakeScript.Shake(0.8f * transform.localScale.x, 3 * transform.localScale.x));
+
         //PowerUp
         powerUpManager.SpawnPowerUp(powerUpChance, transform.position);
 
@@ -178,6 +188,7 @@ public class Square : MonoBehaviour
 
     private void SpawnCubes()
     {
+        Debug.Log("Spawned");
         for(int i = 0; i < SplitAmount; i++)
         {
             gameManager.SquaresAlive++;
@@ -201,4 +212,15 @@ public class Square : MonoBehaviour
         return direction;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        collider2D.enabled = false;
+        Bullet bullet = collision.GetComponent<Bullet>();
+        if (bullet != null)
+        {
+            Die();
+            collision.gameObject.SetActive(false);
+        }
+        collider2D.enabled = true;
+    }
 }

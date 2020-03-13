@@ -8,6 +8,11 @@ public class FireRatePowerUp : PowerUp
 
     protected override void ActivatePowerUp()
     {
-        playerShootScript.StartCoroutine(playerShootScript.FireRateUp(duration, FireRateMultiplier));
+        if (playerShootScript.runningCoroutine != null)
+        {
+            playerShootScript.StopCoroutine(playerShootScript.runningCoroutine);
+            playerShootScript.runningCoroutine = null;
+        }
+        playerShootScript.runningCoroutine = playerShootScript.StartCoroutine(playerShootScript.FireRateUp(duration, FireRateMultiplier));
     }
 }

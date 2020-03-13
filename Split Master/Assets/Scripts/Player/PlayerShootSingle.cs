@@ -7,7 +7,8 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerShootSingle : MonoBehaviour
 {
-    ObjectPooler objectPooler;
+    private ObjectPooler objectPooler;
+    private UIManager uIManager;
 
     [SerializeField]
     private float fireCooldown;
@@ -15,12 +16,17 @@ public class PlayerShootSingle : MonoBehaviour
     private bool tripleFire;
     private float spreadAngle;
 
-
     private float baseFireCooldown;
+
+    [SerializeField]
+    private GameObject PickUpEffect;
+
+    public Coroutine runningCoroutine;
 
     private void Start()
     {
         objectPooler = InstanceManager<ObjectPooler>.GetInstance("ObjectPooler");
+        uIManager = UIManager.Instance;
         canFire = true;
         baseFireCooldown = fireCooldown;
     }
@@ -65,6 +71,16 @@ public class PlayerShootSingle : MonoBehaviour
 
     public IEnumerator FireRateUp(float duration, float multiplier)
     {
+        if(uIManager.runningRoutine != null)
+        {
+            StopCoroutine(uIManager.runningRoutine);
+            uIManager.runningRoutine = null;
+        }
+
+        uIManager.runningRoutine = StartCoroutine(uIManager.StartPowerUpTimer(duration, "Fire Rate Up"));
+
+        PickUpEffect.SetActive(false);
+        PickUpEffect.SetActive(true);
         fireCooldown = baseFireCooldown / multiplier;
         yield return new WaitForSeconds(duration);
         fireCooldown = baseFireCooldown;
@@ -72,6 +88,18 @@ public class PlayerShootSingle : MonoBehaviour
 
     public IEnumerator TripleFire(float duration, float spread)
     {
+        if (uIManager.runningRoutine == null)
+        {
+            uIManager.runningRoutine = StartCoroutine(uIManager.StartPowerUpTimer(duration, "Triple Shot"));
+        }
+        else
+        {
+            StopCoroutine(uIManager.runningRoutine);
+            uIManager.runningRoutine = null;
+        }
+        StartCoroutine(uIManager.StartPowerUpTimer(duration, "Triple Shot"));
+        PickUpEffect.SetActive(false);
+        PickUpEffect.SetActive(true);
         spreadAngle = spread;
         tripleFire = true;
         yield return new WaitForSeconds(duration);

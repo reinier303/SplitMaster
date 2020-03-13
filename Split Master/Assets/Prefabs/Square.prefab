@@ -138,6 +138,7 @@ MonoBehaviour:
   rotationSpeed: 1.5
   speed: 5
   boundsSize: 25
+  check: 0
   SplitAmount: 2
   SplitCount: 4
   firstSquare: 1
@@ -145,7 +146,7 @@ MonoBehaviour:
   newColor2:
     serializedVersion: 2
     rgba: 0
-  powerUpChance: 5
+  powerUpChance: 8.5
 --- !u!50 &8330443176987522789
 Rigidbody2D:
   serializedVersion: 4

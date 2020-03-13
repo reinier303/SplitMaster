@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tag: Squares
   Prefab: {fileID: 6139968110415218628, guid: a1e47653b1f3c874c8581fa7ae76e9c0, type: 3}
-  Amount: 1000
+  Amount: 5000

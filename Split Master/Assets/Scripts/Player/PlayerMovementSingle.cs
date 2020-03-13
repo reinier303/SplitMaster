@@ -12,13 +12,14 @@ public class PlayerMovementSingle : MonoBehaviour
     [SerializeField]
     private Joystick joyStick;
 
-    private float horizontal;
-    private float vertical;
+    private float horizontal, vertical;
 
     // Start is called before the first frame update
     void Start()
     {
-        cam = Camera.main; ;
+        cam = Camera.main;
+        horizontal = 0;
+        vertical = 0;
     }
 
     private void OnGUI()
@@ -51,16 +52,12 @@ public class PlayerMovementSingle : MonoBehaviour
     private void Move()
     {
 
-        float horizontalPc = Input.GetAxisRaw("Horizontal");
-        float verticalPc = Input.GetAxisRaw("Vertical");
+        float horizontalPc = Input.GetAxis("Horizontal");
+        float verticalPc = Input.GetAxis("Vertical");
 
-        transform.position += new Vector3(horizontalPc, verticalPc).normalized * Time.deltaTime * speed;
-        /*
-        if (horizontal != 0 || vertical != 0)
-        {
-            transform.position += new Vector3(horizontal, vertical).normalized * Time.deltaTime * speed;
-        }
-        */
+        float clamped = Mathf.Clamp01(Vector2.SqrMagnitude(new Vector2(horizontalPc, verticalPc)));
+        transform.position += new Vector3(horizontalPc, verticalPc).normalized * clamped * Time.deltaTime * speed;
+
     }
 
     private void Rotate()

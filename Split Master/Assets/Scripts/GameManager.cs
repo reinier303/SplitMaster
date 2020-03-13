@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private bool won;
     public GameObject Player;
     public float totalAmount;
+    public int totalKills;
 
     //Combo
     [SerializeField]
@@ -109,6 +110,7 @@ public class GameManager : MonoBehaviour
     public void AddScore()
     {
         killCount++;
+        totalKills++;
         if (comboActive)
         {
             scoreMultiplier++;

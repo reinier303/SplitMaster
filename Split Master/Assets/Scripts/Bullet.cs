@@ -5,7 +5,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField]
-    private float speed;
+    private float speed, aliveTime;
+
+    private void OnEnable()
+    {
+        StartCoroutine(DisableAfterTime());
+    }
 
     // Update is called once per frame
     void Update()
@@ -14,13 +19,10 @@ public class Bullet : MonoBehaviour
         RemoveBulletAtBounds();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private IEnumerator DisableAfterTime()
     {
-        if(collision.tag == "Square")
-        {
-            collision.GetComponent<Square>().Die();
-            gameObject.SetActive(false);
-        }
+        yield return new WaitForSeconds(aliveTime);
+        gameObject.SetActive(false);
     }
 
     private void RemoveBulletAtBounds()

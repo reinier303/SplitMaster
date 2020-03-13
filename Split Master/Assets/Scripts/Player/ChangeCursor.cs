@@ -10,6 +10,7 @@ public class ChangeCursor : MonoBehaviour
 
     public void CursorCrosshair()
     {
+        hotSpot = new Vector2(cursorTexture.width / 2, cursorTexture.height/2);
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
     }
 }

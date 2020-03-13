@@ -8,6 +8,7 @@ public class TripleFire : PowerUp
 
     protected override void ActivatePowerUp()
     {
+        playerShootScript.StopCoroutine(playerShootScript.TripleFire(duration, spread));
         playerShootScript.StartCoroutine(playerShootScript.TripleFire(duration, spread));
     }
 }

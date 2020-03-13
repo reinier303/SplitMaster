@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
+  aliveTime: 12
 --- !u!82 &5404786349696131035
 AudioSource:
   m_ObjectHideFlags: 0

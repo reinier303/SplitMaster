@@ -15,6 +15,7 @@ public class UIButtonR : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
     public Material HoverMaterial, DownMaterial, BaseMaterial;
     public AudioClip HoverSound, ClickSound;
     private AudioSource audioSource;
+    private UnlockableDifficulty unlock;
 
     private bool image;
 
@@ -25,6 +26,7 @@ public class UIButtonR : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
     {
         audioSource = GetComponent<AudioSource>();
         textComponent = GetComponent<Text>();
+        unlock = GetComponent<UnlockableDifficulty>();
         image = false;
         if (textComponent == null)
         {
@@ -45,7 +47,14 @@ public class UIButtonR : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
         }
         audioSource.clip = ClickSound;
         audioSource.Play();
-        OnPointerDownEvent.Invoke();
+        if(OnPointerDownEvent != null)
+        {
+            OnPointerDownEvent.Invoke();
+        }
+        else
+        {
+            unlock.ShowUnlockText();
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -83,6 +92,10 @@ public class UIButtonR : MonoBehaviour, IPointerEnterHandler, IPointerDownHandle
         else
         {
             imageComponent.material = BaseMaterial;
+        }
+        if(OnPointerDownEvent == null)
+        {
+            unlock.unlockText.gameObject.SetActive(false);
         }
     }
 

@@ -21,13 +21,14 @@ public class PowerUpManager : MonoBehaviour
 
         powerUps.Add("BulletBlast");
         powerUps.Add("BulletBlast");
-        powerUps.Add("TripleFire");
+        powerUps.Add("BulletBlast");
+        powerUps.Add("FireRate");
         powerUps.Add("FireRate");
     }
 
     public void SpawnPowerUp(float chance, Vector2 position)
     {
-        float random = Random.Range(0, 100);
+        float random = Random.Range(0f, 100f);
         if(random <= chance)
         {
             objectPooler.SpawnFromPool(powerUps[Random.Range(0, powerUps.Count)], position, Quaternion.identity);

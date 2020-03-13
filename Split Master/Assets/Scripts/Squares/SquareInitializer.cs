@@ -30,21 +30,25 @@ public class SquareInitializer : MonoBehaviour
 
         gameManager.SquaresAlive = squareAmount;
         gameManager.difficulty = data.GetName();
-        gameManager.totalAmount = squareAmount * Mathf.Pow(splitAmount, splitCount);
 
-        Debug.Log(gameManager.totalAmount);
+        gameManager.totalAmount = squareAmount;
+        for (int i = 1; i != splitCount + 1; i++)
+        {
+            gameManager.totalAmount += (squareAmount * Mathf.Pow(splitAmount, i));
+        }
+
         if (data.GetTutorial())
         {
             EnableTutorial();
         }
         else
         {
-            Initialze();
+            Initialize();
         }
     }
 
     // Start is called before the first frame update
-    private void Initialze()
+    private void Initialize()
     {
         InitCubes();
         SpawnCubes();
@@ -61,7 +65,7 @@ public class SquareInitializer : MonoBehaviour
     {
         Tutorial.SetActive(false);
         Time.timeScale = 1;
-        Initialze();
+        Initialize();
     }
 
     private void SpawnCubes()

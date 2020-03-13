@@ -7,6 +7,9 @@ using System.Linq;
 
 public class AchievementManager : MonoBehaviour
 {
+    //Instance
+    public static AchievementManager Instance;
+
     //All Achievements
     [HideInInspector]
     public List<ScriptableAchievement> Achievements = new List<ScriptableAchievement>();
@@ -21,11 +24,16 @@ public class AchievementManager : MonoBehaviour
     //Achievement Data
     public AchievementData achievementData;
 
+    //Script References
     public GameManager gameManager;
 
     private GameObject achievementPopUp;
 
     private Dictionary<string, bool> AchievementUnlockStatus = new Dictionary<string, bool>();
+
+    private List<ScriptableAchievement> achievementQueue = new List<ScriptableAchievement>();
+
+    private bool popUpShowing;
 
     private void Awake()
     {
@@ -38,6 +46,9 @@ public class AchievementManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
+
+        Instance = this;
+
         InitializeAchievements();
         SceneManager.activeSceneChanged += InitializeOnSceneChange;
 
@@ -235,14 +246,29 @@ public class AchievementManager : MonoBehaviour
 
     private IEnumerator ShowPopUp(ScriptableAchievement achievement)
     {
+        if(popUpShowing)
+        {
+            achievementQueue.Add(achievement);
+            yield break;
+        }
+        popUpShowing = true;
+
         achievementPopUp = gameManager.AchievementPopUp;
         achievementPopUp.SetActive(true);
         achievementPopUp.transform.GetChild(0).GetComponent<Text>().text = achievement.AchievementName;
         achievementPopUp.transform.GetChild(1).GetComponent<Text>().text = achievement.Description;
+
         yield return new WaitForSeconds(5f);
         achievementPopUp.GetComponent<Animator>().SetTrigger("PopOut");
         yield return new WaitForSeconds(1f);
+
         achievementPopUp.SetActive(false);
+        popUpShowing = false;
+        if(achievementQueue.Count > 0)
+        {
+            StartCoroutine(ShowPopUp(achievementQueue[0]));
+            achievementQueue.RemoveAt(0);
+        }
     }
 }
 
