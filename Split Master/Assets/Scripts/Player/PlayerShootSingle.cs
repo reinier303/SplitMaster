@@ -18,8 +18,7 @@ public class PlayerShootSingle : MonoBehaviour
 
     private float baseFireCooldown;
 
-    [SerializeField]
-    private GameObject PickUpEffect;
+    public GameObject PickUpEffect, Muzzle;
 
     public Coroutine runningCoroutine;
 
@@ -53,6 +52,9 @@ public class PlayerShootSingle : MonoBehaviour
         if(canFire)
         {
             canFire = false;
+            Muzzle.SetActive(true);
+            GameObject pop = objectPooler.SpawnFromPool("BulletPop", Muzzle.transform.position, Quaternion.identity);
+            pop.transform.localScale *= 0.3f;
             if(tripleFire)
             {
                 for(int i = 0; i < 3; i++)

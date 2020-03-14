@@ -12,14 +12,16 @@ public class PlayerMovementSingle : MonoBehaviour
     [SerializeField]
     private Joystick joyStick;
 
-    private float horizontal, vertical;
+    private float horizontalL, verticalL;
+    private float horizontalR, verticalR;
+
 
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
-        horizontal = 0;
-        vertical = 0;
+        horizontalL = 0;
+        verticalL = 0;
     }
 
     private void OnGUI()
@@ -73,23 +75,23 @@ public class PlayerMovementSingle : MonoBehaviour
     
     private void GetAxises()
     {
-        horizontal = joyStick.Horizontal;
-        vertical = joyStick.Vertical;
+        horizontalL = joyStick.HorizontalL;
+        verticalL = joyStick.VerticalL;
     }
 
     private void MoveMobile()
     {
-        if (horizontal != 0 || vertical != 0)
+        if (horizontalL != 0 || verticalL != 0)
         {
-            transform.position += new Vector3(horizontal, vertical).normalized * Time.deltaTime * speed;
+            transform.position += new Vector3(horizontalL, verticalL).normalized * Time.deltaTime * speed;
         }
     }
 
     private void RotateMobile()
     {
-        if(horizontal != 0 || vertical != 0)
+        if(horizontalL != 0 || verticalL != 0)
         {
-            Vector3 lookVec = new Vector3(horizontal, vertical, 4096);
+            Vector3 lookVec = new Vector3(horizontalL, verticalL, 4096);
             Quaternion targetRotation = Quaternion.LookRotation(lookVec, Vector3.back);
             transform.rotation = targetRotation;
         }

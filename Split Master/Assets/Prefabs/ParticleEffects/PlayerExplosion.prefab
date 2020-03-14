@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7085668031028644307}
   - component: {fileID: -7067875503895855773}
   m_Layer: 0
-  m_Name: SquareExplosion3
+  m_Name: PlayerExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4767,7 +4767,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0fc082acddf858f47a71bb94f41ec81e, type: 2}
+  - {fileID: 2100000, guid: d1a2c98192f0e2643b36ee6a7f466573, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

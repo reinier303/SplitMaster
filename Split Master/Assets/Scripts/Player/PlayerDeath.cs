@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerDeath : MonoBehaviour
 {
-    GameManager gameManager;
+    private GameManager gameManager;
+    public GameObject DeathEffect;
 
     private void Start()
     {
@@ -17,15 +18,21 @@ public class PlayerDeath : MonoBehaviour
     {
         if(collision.tag == "Square")
         {
-            Die();
+            gameManager.StartCoroutine(Die());
         }
     }
 
-    private void Die()
+    private IEnumerator Die()
     {
+        DeathEffect.SetActive(true);
+        DeathEffect.transform.SetParent(transform.parent);
+        gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(3f);
+
         gameManager.StartCoroutine(gameManager.lerpScore(0, gameManager.Score, 3f));
         gameManager.OnEndGame();
-        gameObject.SetActive(false);
+
     }
 
     public void Retry()
