@@ -24,6 +24,8 @@ public class PowerUpManager : MonoBehaviour
         powerUps.Add("BulletBlast");
         powerUps.Add("FireRate");
         powerUps.Add("FireRate");
+        powerUps.Add("TripleFire");
+
     }
 
     public void SpawnPowerUp(float chance, Vector2 position)

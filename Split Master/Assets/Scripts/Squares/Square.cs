@@ -15,10 +15,9 @@ public class Square : MonoBehaviour
     private float speedX;
     private float speedY;
 
-    private List<Vector2> Directions = new List<Vector2>();
-    public bool check;
+    private bool isDead;
 
-    Collider2D collider2D;
+    private List<Vector2> Directions = new List<Vector2>();
 
     //Script References
     ObjectPooler objectPooler;
@@ -51,7 +50,6 @@ public class Square : MonoBehaviour
         objectPooler = InstanceManager<ObjectPooler>.GetInstance("ObjectPooler");
         powerUpManager = PowerUpManager.Instance;
         shakeScript = gameManager.transform.GetComponent<CameraShake>();
-        collider2D = GetComponent<Collider2D>();
         AddDirections();
         if(firstSquare)
         {
@@ -61,7 +59,14 @@ public class Square : MonoBehaviour
         movingStarted = false;
         checkRunning = false;
         StartCoroutine(WaitToMove());
+
     }
+
+    private void OnEnable()
+    {
+        isDead = false;
+    }
+
     // Update is called once per frame
     private void Update()
     {
@@ -146,13 +151,11 @@ public class Square : MonoBehaviour
         if (transform.position.x < -25)
         {
             transform.position = new Vector2(transform.position.x + 1, transform.position.y);
-            print("Pushed");
 
         }
         if (transform.position.y > 25)
         {
             transform.position = new Vector2(transform.position.x, transform.position.y - 1);
-            print("Pushed");
 
         }
         if (transform.position.y < -25)
@@ -164,6 +167,14 @@ public class Square : MonoBehaviour
 
     public void Die()
     {
+        if(isDead)
+        {
+            return;
+        }
+        isDead = true;
+
+        gameManager.StartCoroutine(gameManager.Sleep());
+
         //PartiicleEffect
         GameObject particleObject =  objectPooler.SpawnFromPool("Explosion", transform.position, Quaternion.identity);
         particleObject.transform.localScale = transform.localScale * 1.25f;
@@ -183,12 +194,12 @@ public class Square : MonoBehaviour
             SpawnCubes();
         }
         gameManager.SquaresAlive--;
+
         gameObject.SetActive(false);
     }
 
     private void SpawnCubes()
     {
-        Debug.Log("Spawned");
         for(int i = 0; i < SplitAmount; i++)
         {
             gameManager.SquaresAlive++;
@@ -210,17 +221,5 @@ public class Square : MonoBehaviour
         Vector2 direction = Directions[index];
         Directions.RemoveAt(index);
         return direction;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        collider2D.enabled = false;
-        Bullet bullet = collision.GetComponent<Bullet>();
-        if (bullet != null)
-        {
-            Die();
-            collision.gameObject.SetActive(false);
-        }
-        collider2D.enabled = true;
     }
 }

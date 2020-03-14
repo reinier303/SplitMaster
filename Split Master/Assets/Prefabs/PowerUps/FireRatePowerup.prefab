@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af8a24f80b17b940af20b5cb99da265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 5
-  FireRateMultiplier: 2
+  duration: 4
+  FireRateMultiplier: 1.7
 --- !u!82 &1736400113043606255
 AudioSource:
   m_ObjectHideFlags: 0

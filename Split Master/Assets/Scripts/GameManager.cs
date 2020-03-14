@@ -221,4 +221,11 @@ public class GameManager : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1;
     }
+
+    public IEnumerator Sleep()
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(0.02f);
+        Time.timeScale = 1;
+    }
 }
