@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Achievement", order = 1)]
 public class ScriptableAchievement : ScriptableObject
 {
-    public int Index;
+    public float Index;
     public string AchievementGroup;
     public string AchievementName;
     public bool Unlocked;

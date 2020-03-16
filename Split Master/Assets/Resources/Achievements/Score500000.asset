@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839516a869731c94a9f0a3c100bf54dd, type: 3}
+  m_Name: Score500000
+  m_EditorClassIdentifier: 
+  Index: 6.1
+  AchievementGroup: Score
+  AchievementName: Score500000
+  Unlocked: 0
+  Amount: 500000
+  Description: Score 500000 points in any mode
+  icon: {fileID: 21300000, guid: 18ba276f09014c9478a98e7fcf3d09c7, type: 3}
