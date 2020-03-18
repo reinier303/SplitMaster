@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 1
   AchievementGroup: Score
-  AchievementName: Score5000
+  AchievementName: You can do better
   Unlocked: 0
   Amount: 5000
   Description: Score 5000 points in any mode

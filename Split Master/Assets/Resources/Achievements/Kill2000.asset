@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Achievement
   Index: 11
   AchievementGroup: KillAmount
-  AchievementName: SquareSlayer2000
+  AchievementName: Bane of the squares
   Unlocked: 1
   Amount: 2000
   Description: Kill 2000 squares

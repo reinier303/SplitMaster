@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 4
   AchievementGroup: Score
-  AchievementName: Score50000
+  AchievementName: Big boy, big score
   Unlocked: 0
   Amount: 50000
   Description: Score 50000 points in any mode

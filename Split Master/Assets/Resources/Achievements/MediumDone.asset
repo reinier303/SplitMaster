@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 28
   AchievementGroup: Difficulty
-  AchievementName: MediumDone
+  AchievementName: Split Master
   Unlocked: 0
   Amount: 1
   Description: Beat medium

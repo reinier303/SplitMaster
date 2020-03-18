@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Achievement
   Index: 8
   AchievementGroup: KillAmount
-  AchievementName: Recruit
+  AchievementName: Square Slayer
   Unlocked: 1
   Amount: 100
   Description: Kill 100 squares

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 26
   AchievementGroup: Difficulty
-  AchievementName: TutorialDone
+  AchievementName: Initiate
   Unlocked: 0
   Amount: 1
   Description: Beat the tutorial

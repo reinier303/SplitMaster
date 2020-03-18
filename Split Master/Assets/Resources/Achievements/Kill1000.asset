@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Achievement
   Index: 10
   AchievementGroup: KillAmount
-  AchievementName: SquareSlayer
+  AchievementName: Square Obliterator
   Unlocked: 1
   Amount: 1000
   Description: Kill 1000 squares

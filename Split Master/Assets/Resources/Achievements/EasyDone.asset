@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 27
   AchievementGroup: Difficulty
-  AchievementName: EasyDone
+  AchievementName: Splitter
   Unlocked: 0
   Amount: 1
   Description: Beat easy

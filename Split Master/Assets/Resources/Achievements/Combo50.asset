@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 17
   AchievementGroup: Combo
-  AchievementName: Combo50
+  AchievementName: You're getting there
   Unlocked: 0
   Amount: 50
   Description: Get a combo of 50

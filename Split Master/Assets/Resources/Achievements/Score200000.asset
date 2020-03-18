@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 6
   AchievementGroup: Score
-  AchievementName: Score200000
+  AchievementName: 200K
   Unlocked: 0
   Amount: 200000
   Description: Score 200000 points in any mode

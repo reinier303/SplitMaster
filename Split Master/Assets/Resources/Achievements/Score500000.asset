@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 6.1
   AchievementGroup: Score
-  AchievementName: Score500000
+  AchievementName: Ultimate Arcade master
   Unlocked: 0
   Amount: 500000
   Description: Score 500000 points in any mode

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 25
   AchievementGroup: DeathAmount
-  AchievementName: Death100
+  AchievementName: One person graveyard
   Unlocked: 0
   Amount: 100
   Description: Die 100 times

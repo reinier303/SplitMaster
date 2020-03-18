@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 29
   AchievementGroup: Difficulty
-  AchievementName: HardDone
+  AchievementName: Legendary Split Master
   Unlocked: 0
   Amount: 1
   Description: Beat hard

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 14
   AchievementGroup: Combo
-  AchievementName: Combo5
+  AchievementName: Combo
   Unlocked: 0
   Amount: 5
   Description: Get a combo of 5

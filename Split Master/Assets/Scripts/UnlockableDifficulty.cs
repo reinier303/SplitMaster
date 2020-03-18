@@ -18,9 +18,9 @@ public class UnlockableDifficulty : MonoBehaviour
         button = GetComponent<UIButtonR>();
         text = GetComponent<Text>();
 
-        if(achievementManager.achievementData.AchievementUnlockStatus[scriptableAchievement.name])
+        if(achievementManager.achievementData.AchievementUnlockStatus[scriptableAchievement.AchievementName])
         {
-            if(scriptableAchievement.AchievementName == "HardDone")
+            if(scriptableAchievement.AchievementName == "Legendary Split Master")
             {
                 transform.parent.gameObject.SetActive(true);
             }
@@ -28,7 +28,7 @@ public class UnlockableDifficulty : MonoBehaviour
         }
         else
         {
-            if (scriptableAchievement.AchievementName == "HardDone")
+            if (scriptableAchievement.AchievementName == "Legendary Split Master")
             {
                 transform.parent.gameObject.SetActive(false);
             }
@@ -45,7 +45,7 @@ public class UnlockableDifficulty : MonoBehaviour
     public void ShowUnlockText()
     {
         unlockText.gameObject.SetActive(true);
-        string difficulty = scriptableAchievement.AchievementName.Replace("Done", "");
+        string difficulty = transform.parent.name;
         unlockText.text = "You need to beat " + difficulty + " to unlock this difficulty";
     }
 

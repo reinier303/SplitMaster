@@ -197,37 +197,37 @@ public class AchievementManager : MonoBehaviour
         switch (difficulty)
         {
             case "Tutorial":
-                if(!AchievementUnlockStatus["TutorialDone"])
+                if(!AchievementUnlockStatus["Initiate"])
                 {
-                    AchievementUnlockStatus["TutorialDone"] = true;
+                    AchievementUnlockStatus["Initiate"] = true;
                     StartCoroutine(ShowPopUp(Achievements[26]));
                 }
                 break;
             case "Easy":
-                if (!AchievementUnlockStatus["EasyDone"])
+                if (!AchievementUnlockStatus["Splitter"])
                 {
-                    AchievementUnlockStatus["EasyDone"] = true;
+                    AchievementUnlockStatus["Splitter"] = true;
                     StartCoroutine(ShowPopUp(Achievements[27]));
                 }
                 break;
             case "Medium":
-                if (!AchievementUnlockStatus["MediumDone"])
+                if (!AchievementUnlockStatus["Split Master"])
                 {
-                    AchievementUnlockStatus["MediumDone"] = true;
+                    AchievementUnlockStatus["Split Master"] = true;
                     StartCoroutine(ShowPopUp(Achievements[28]));
                 }
                 break;
             case "Hard":
-                if (!AchievementUnlockStatus["HardDone"])
+                if (!AchievementUnlockStatus["Legendary Split Master"])
                 {
-                    AchievementUnlockStatus["HardDone"] = true;
+                    AchievementUnlockStatus["Legendary Split Master"] = true;
                     StartCoroutine(ShowPopUp(Achievements[29]));
                 }
                 break;
             case "Extreme":
-                if (!AchievementUnlockStatus["ExtremeDone"])
+                if (!AchievementUnlockStatus["Legendary Split Grandmaster"])
                 {
-                    AchievementUnlockStatus["ExtremeDone"] = true;
+                    AchievementUnlockStatus["Legendary Split Grandmaster"] = true;
                     StartCoroutine(ShowPopUp(DifficultyAchievements[30]));
                 }
                 break;

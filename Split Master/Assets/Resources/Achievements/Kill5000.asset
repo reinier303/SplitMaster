@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Achievement
   Index: 12
   AchievementGroup: KillAmount
-  AchievementName: Sergeant5000
+  AchievementName: You really hate squares don't you?
   Unlocked: 1
   Amount: 5000
   Description: Kill 5000 squares

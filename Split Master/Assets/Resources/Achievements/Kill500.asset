@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Achievement
   Index: 9
   AchievementGroup: KillAmount
-  AchievementName: Sergeant
+  AchievementName: Square Destroyer
   Unlocked: 1
   Amount: 500
   Description: Kill 500 squares

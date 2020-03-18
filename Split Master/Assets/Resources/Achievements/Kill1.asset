@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Achievement
   Index: 7
   AchievementGroup: KillAmount
-  AchievementName: FirstBlood
+  AchievementName: First Blood
   Unlocked: 1
   Amount: 1
   Description: First square killed

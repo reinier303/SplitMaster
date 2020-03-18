@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 22
   AchievementGroup: DeathAmount
-  AchievementName: Death10
+  AchievementName: You'll get better
   Unlocked: 0
   Amount: 10
   Description: Die 10 times

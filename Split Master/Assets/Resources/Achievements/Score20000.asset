@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 3
   AchievementGroup: Score
-  AchievementName: Score20000
+  AchievementName: Big score galore
   Unlocked: 0
   Amount: 20000
   Description: Score 20000 points in any mode

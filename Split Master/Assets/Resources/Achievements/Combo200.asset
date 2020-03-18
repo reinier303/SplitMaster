@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 19
   AchievementGroup: Combo
-  AchievementName: Combo200
+  AchievementName: Double Wombo
   Unlocked: 0
   Amount: 200
   Description: Get a combo of 200

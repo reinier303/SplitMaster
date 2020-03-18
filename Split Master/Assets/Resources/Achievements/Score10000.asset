@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 2
   AchievementGroup: Score
-  AchievementName: Score10000
+  AchievementName: Wow... that's amazing
   Unlocked: 0
   Amount: 10000
   Description: Score 10000 points in any mode

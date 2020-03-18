@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839516a869731c94a9f0a3c100bf54dd, type: 3}
   m_Name: Score1000
   m_EditorClassIdentifier: 
+  Index: 0
   AchievementGroup: Score
-  AchievementName: Score1000
+  AchievementName: It is just the beginning
   Unlocked: 0
   Amount: 1000
   Description: Score 1000 points in any mode

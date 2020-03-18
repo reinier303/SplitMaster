@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Achievement
   Index: 13
   AchievementGroup: KillAmount
-  AchievementName: SquareSlayer10000
+  AchievementName: Cleansed the squares
   Unlocked: 1
   Amount: 10000
   Description: Kill 10000 squares

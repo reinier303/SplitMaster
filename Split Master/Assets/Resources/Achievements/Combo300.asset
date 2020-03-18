@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 20
   AchievementGroup: Combo
-  AchievementName: Combo300
+  AchievementName: Ultimate Combo Master 300
   Unlocked: 0
   Amount: 300
   Description: Get a combo of 300

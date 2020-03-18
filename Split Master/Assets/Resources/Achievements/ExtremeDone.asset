@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 30
   AchievementGroup: Difficulty
-  AchievementName: ExtremeDone
+  AchievementName: Legendary Split Grandmaster
   Unlocked: 0
   Amount: 1
-  Description: Beat extreme
+  Description: Beat extreme.
   icon: {fileID: 21300000, guid: 18ba276f09014c9478a98e7fcf3d09c7, type: 3}

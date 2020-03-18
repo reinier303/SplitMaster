@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Index: 24
   AchievementGroup: DeathAmount
-  AchievementName: Death50
+  AchievementName: Just a few more tries
   Unlocked: 0
   Amount: 50
   Description: Die 50 times
