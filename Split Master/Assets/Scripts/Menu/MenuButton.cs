@@ -7,6 +7,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class MenuButton : MonoBehaviour
 {
     [SerializeField]
+    private int order;
+    [SerializeField]
     private string difficultyName;
     [SerializeField]
     private int squareAmount;
@@ -16,6 +18,12 @@ public class MenuButton : MonoBehaviour
     private int splitCount;
     [SerializeField]
     private bool tutorial;
+
+    public void Start()
+    {
+        LevelData difficulty = new LevelData(difficultyName, squareAmount, splitAmount, splitCount, tutorial, order);
+        Difficulties.Instance.DifficultiesList.Add(difficulty);
+    }
 
     public void GoToDifficulty()
     {
@@ -38,15 +46,16 @@ public class MenuButton : MonoBehaviour
 }
 
 [System.Serializable]
-class LevelData
+public class LevelData
 {
+    private int difficultyOrder;
     private string difficultyName;
     private int squareAmount;
     private int splitAmount;
     private int splitCount;
     private bool tutorial;
 
-    public LevelData(string newDifficultyName, int newSquareAmount, int newSplitAmount, int newSplitCount, bool isTutorial)
+    public LevelData(string newDifficultyName, int newSquareAmount, int newSplitAmount, int newSplitCount, bool isTutorial, int difficultyOrder = 0)
     {
         difficultyName = newDifficultyName;
         squareAmount = newSquareAmount;

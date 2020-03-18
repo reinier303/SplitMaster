@@ -45,7 +45,7 @@ public class UnlockableDifficulty : MonoBehaviour
     public void ShowUnlockText()
     {
         unlockText.gameObject.SetActive(true);
-        string difficulty = transform.parent.name;
+        string difficulty = scriptableAchievement.name.Replace("Done", "");
         unlockText.text = "You need to beat " + difficulty + " to unlock this difficulty";
     }
 

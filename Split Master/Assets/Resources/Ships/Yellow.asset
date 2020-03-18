@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IndexNumber: 2
   ShipName: Yellow
-  ShipColor: {r: 1, g: 1, b: 1, a: 1}
+  ShipColor: {r: 0.9479194, g: 0.9528302, b: 0.51686543, a: 1}
   IndicatorColor: {r: 1, g: 1, b: 0, a: 1}
   ShipSprite: {fileID: 21300000, guid: 99faa7d6598fac741a684a5fb210ba1a, type: 3}
-  IndicatorSprite: {fileID: 21300000, guid: 99faa7d6598fac741a684a5fb210ba1a, type: 3}
-  ShipMaterial: {fileID: 2100000, guid: d1a2c98192f0e2643b36ee6a7f466573, type: 2}
+  IndicatorSprite: {fileID: 21300000, guid: 8baf26a32a3d5c941aad3670618beb9b, type: 3}
+  ShipMaterial: {fileID: 2100000, guid: 12c56efdc6e818d489cefc1f2d8133e3, type: 2}
   IndicatorMaterial: {fileID: 2100000, guid: a49b3f7547cf1d545b1361f5f3a28e41, type: 2}
   Achievement: {fileID: 11400000, guid: 671fae9df8b4d184eb00ee96e6626ab0, type: 2}

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e88b4bca93714334d95fef45725a75e1, type: 3}
-  m_Name: DJ
+  m_Name: Death
   m_EditorClassIdentifier: 
   IndexNumber: 888
-  ShipName: DJ Dffrnt
-  ShipColor: {r: 0, g: 0, b: 0, a: 1}
-  IndicatorColor: {r: 1, g: 0, b: 0, a: 1}
+  ShipName: Biker
+  ShipColor: {r: 1, g: 0, b: 0, a: 1}
+  IndicatorColor: {r: 0, g: 0, b: 0, a: 1}
   ShipSprite: {fileID: 21300000, guid: 99faa7d6598fac741a684a5fb210ba1a, type: 3}
-  IndicatorSprite: {fileID: 21300000, guid: 027590cf1140d214caad1572cf615b18, type: 3}
-  ShipMaterial: {fileID: 2100000, guid: d1cd5d6a0de7e5b468b9bbcc59070955, type: 2}
-  IndicatorMaterial: {fileID: 2100000, guid: 11d97827a0c95e74fa53a0bed9248c97, type: 2}
-  Achievement: {fileID: 0}
+  IndicatorSprite: {fileID: 21300000, guid: 9fc976da81dfcf0488b90e24a2a67abf, type: 3}
+  ShipMaterial: {fileID: 2100000, guid: fde4316f7bd541c4cab219b6748a5cd9, type: 2}
+  IndicatorMaterial: {fileID: 2100000, guid: 95e76239b19a41b4994ce1c863a7e319, type: 2}
+  Achievement: {fileID: 11400000, guid: ec1777c4e26b0ae4c98e8328ddc6203d, type: 2}

@@ -176,11 +176,11 @@ public class GameManager : MonoBehaviour
         {
             float timeProgressed = (Time.time - StartTime) / LerpTime;  // this will be 0 at the beginning and 1 at the end.
             currentScoreDisplay = Mathf.Lerp(startNumber, endNumber, timeProgressed);
-            scoreText.text = "Final Score:\n" + Mathf.RoundToInt(currentScoreDisplay) + "\n\n Higschore:\n" + higscore;
+            scoreText.text = "Final Score:\n" + Mathf.RoundToInt(currentScoreDisplay) + "\n\n Highscore:\n" + higscore;
             yield return new WaitForFixedUpdate();
         }
         currentScoreDisplay = endNumber;
-        scoreText.text = "Final Score:\n" + Mathf.RoundToInt(currentScoreDisplay) + "\n\n Higschore:\n" + higscore;
+        scoreText.text = "Final Score:\n" + Mathf.RoundToInt(currentScoreDisplay) + "\n\n Highscore:\n" + higscore;
 
         CheckHighscore();
     }
