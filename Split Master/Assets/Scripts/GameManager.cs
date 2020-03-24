@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     //Final Screen
     [SerializeField]
-    GameObject finalScore;
+    GameObject finalScore, nextButton;
     [SerializeField]
     public Text scoreText;
     private float currentScoreDisplay;
@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour
     private void Win()
     {
         achievementManager.CheckDifficultyAchievements(difficulty);
+        nextButton.SetActive(true);
         StartCoroutine(lerpScore(0, Score, 4));
     }
 
@@ -190,6 +191,7 @@ public class GameManager : MonoBehaviour
         if(Score > PlayerPrefs.GetFloat("Highscore"))
         {
             PlayerPrefs.SetFloat("Highscore", Score);
+            KongregateAPIBehaviour.Instance.SubmitHighscore(Score);
         }
     }
 

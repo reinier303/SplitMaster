@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class KongregateUserNameText : MonoBehaviour
 {
-    /*
     private void Start()
     {
         KongregateAPIBehaviour kongregateAPI = KongregateAPIBehaviour.Instance;
@@ -23,5 +22,4 @@ public class KongregateUserNameText : MonoBehaviour
             textComponent.text = "NaN";
         }
     }
-    */
 }

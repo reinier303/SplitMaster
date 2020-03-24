@@ -3,32 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour
 {
-    [SerializeField]
-    private int order;
-    [SerializeField]
-    private string difficultyName;
-    [SerializeField]
-    private int squareAmount;
-    [SerializeField]
-    private int splitAmount;
-    [SerializeField]
-    private int splitCount;
-    [SerializeField]
-    private bool tutorial;
+    private Difficulties difficulties;
+
+    public int order;
+    public string difficultyName;
+    public int squareAmount;
+    public int splitAmount;
+    public int splitCount;
+    public bool tutorial;
 
     public void Start()
     {
+        difficulties = Difficulties.Instance;
         LevelData difficulty = new LevelData(difficultyName, squareAmount, splitAmount, splitCount, tutorial, order);
-        Difficulties.Instance.DifficultiesList.Add(difficulty);
+        difficulties.DifficultiesList.Add(difficulty);
     }
 
     public void GoToDifficulty()
     {
+        difficulties = Difficulties.Instance;
+        difficulties.currentDifficulty = new LevelData(difficultyName, squareAmount, splitAmount, splitCount, tutorial, order);
         SaveDifficulty();
-        GetComponentInParent<Menu>().LoadScene(1);
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            GetComponentInParent<Menu>().LoadScene(1);
+        }
+        else
+        {
+            SceneManager.LoadSceneAsync(1);
+            Destroy(this);
+        }
     }
 
     private void SaveDifficulty()
@@ -38,7 +46,7 @@ public class MenuButton : MonoBehaviour
 
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        LevelData data = new LevelData(difficultyName, squareAmount, splitAmount, splitCount, tutorial);
+        LevelData data = new LevelData(difficultyName, squareAmount, splitAmount, splitCount, tutorial, order);
 
         formatter.Serialize(stream, data);
         stream.Close();
@@ -48,20 +56,21 @@ public class MenuButton : MonoBehaviour
 [System.Serializable]
 public class LevelData
 {
-    private int difficultyOrder;
-    private string difficultyName;
-    private int squareAmount;
-    private int splitAmount;
-    private int splitCount;
-    private bool tutorial;
+    public int difficultyOrder;
+    public string difficultyName;
+    public int squareAmount;
+    public int splitAmount;
+    public int splitCount;
+    public bool tutorial;
 
-    public LevelData(string newDifficultyName, int newSquareAmount, int newSplitAmount, int newSplitCount, bool isTutorial, int difficultyOrder = 0)
+    public LevelData(string newDifficultyName, int newSquareAmount, int newSplitAmount, int newSplitCount, bool isTutorial, int newDifficultyOrder)
     {
         difficultyName = newDifficultyName;
         squareAmount = newSquareAmount;
         splitAmount = newSplitAmount;
         splitCount = newSplitCount;
         tutorial = isTutorial;
+        difficultyOrder = newDifficultyOrder;
     }
 
     public string GetName()

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class Menu : MonoBehaviour
 {
@@ -19,5 +20,20 @@ public class Menu : MonoBehaviour
         }
         LoadingScreen.SetActive(true);
         SceneManager.LoadSceneAsync(scene);
+    }
+
+    public void WipeData()
+    {
+        string path = Application.persistentDataPath + "/saveData/AchievementData.sav";
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+            Debug.Log("File at: " + path + " deleted.");
+            LoadScene(0);
+        }
+        else
+        {
+            Debug.Log("No file found at: " + path);
+        }
     }
 }

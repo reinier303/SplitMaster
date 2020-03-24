@@ -2128,7 +2128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &389107379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2141,6 +2141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92fc545c7dbf96144b17d611c8355d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Username: 
 --- !u!4 &389107380
 Transform:
   m_ObjectHideFlags: 0
@@ -6349,6 +6350,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DifficultiesList: []
+  currentDifficulty:
+    difficultyOrder: 0
+    difficultyName: 
+    squareAmount: 0
+    splitAmount: 0
+    splitCount: 0
+    tutorial: 0
 --- !u!4 &1545549496
 Transform:
   m_ObjectHideFlags: 0

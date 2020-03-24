@@ -28,7 +28,7 @@ public class PlayerDeath : MonoBehaviour
         DeathEffect.transform.SetParent(transform.parent);
         gameObject.SetActive(false);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.15f);
 
         gameManager.StartCoroutine(gameManager.lerpScore(0, gameManager.Score, 3f));
         gameManager.OnEndGame();

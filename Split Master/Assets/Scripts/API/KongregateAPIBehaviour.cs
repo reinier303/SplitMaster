@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class KongregateAPIBehaviour : MonoBehaviour
 {
-    private static KongregateAPIBehaviour instance;
+    public static KongregateAPIBehaviour Instance;
 
-    public void Start()
+    public string Username;
+
+    public void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
-        else if (instance != this)
+        else if (Instance != this)
         {
             Destroy(gameObject);
             return;
@@ -38,7 +40,13 @@ public class KongregateAPIBehaviour : MonoBehaviour
         var info = userInfoString.Split('|');
         var userId = System.Convert.ToInt32(info[0]);
         var username = info[1];
+        Username = username;
         var gameAuthToken = info[2];
         Debug.Log("Kongregate User Info: " + username + ", userId: " + userId);
+    }
+
+    public void SubmitHighscore(float score)
+    {
+        Application.ExternalCall("kongregate.stats.submit", "Highscore", Mathf.RoundToInt(score));
     }
 }
