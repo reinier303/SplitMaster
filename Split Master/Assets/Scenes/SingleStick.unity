@@ -7820,12 +7820,12 @@ PrefabInstance:
     - target: {fileID: 7085668031028644306, guid: 997906c7f8fd7524ea677fa74d658957,
         type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7085668031028644306, guid: 997906c7f8fd7524ea677fa74d658957,
         type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 1.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7085668031028644306, guid: 997906c7f8fd7524ea677fa74d658957,
         type: 3}
@@ -7841,6 +7841,11 @@ PrefabInstance:
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085668031028644306, guid: 997906c7f8fd7524ea677fa74d658957,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 52428
       objectReference: {fileID: 0}
     - target: {fileID: 7085668031028644307, guid: 997906c7f8fd7524ea677fa74d658957,
         type: 3}
