@@ -18,6 +18,7 @@ public class ChangeMenu : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = true;
         rect = GetComponent<RectTransform>();
         if (rect.anchoredPosition.y == 0)
         {

@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class ChangeCursor : MonoBehaviour
 {
-    public Texture2D cursorTexture;
-    private CursorMode cursorMode = CursorMode.Auto;
-    private Vector2 hotSpot = Vector2.zero;
+    Camera camera;
+    public Transform CursorTransform;
 
-    public void CursorCrosshair()
+    private void Start()
     {
-        hotSpot = new Vector2(cursorTexture.width / 2, cursorTexture.height/2);
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        camera = GetComponent<Camera>();
+        Cursor.visible = false;
+    }
+
+    private void FixedUpdate()
+    {
+        Vector3 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
+        CursorTransform.transform.position = new Vector3(mousePos.x, mousePos.y, 10);
     }
 }

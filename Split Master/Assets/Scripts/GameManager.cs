@@ -167,6 +167,8 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator lerpScore(float startNumber, float endNumber, float LerpTime)
     {
+        CheckHighscore();
+
         finalScore.SetActive(true);
         float higscore = PlayerPrefs.GetFloat("Highscore");
 
@@ -182,8 +184,6 @@ public class GameManager : MonoBehaviour
         }
         currentScoreDisplay = endNumber;
         scoreText.text = "Final Score:\n" + Mathf.RoundToInt(currentScoreDisplay) + "\n\n Highscore:\n" + higscore;
-
-        CheckHighscore();
     }
 
     private void CheckHighscore()

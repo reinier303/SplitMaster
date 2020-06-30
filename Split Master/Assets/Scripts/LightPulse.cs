@@ -5,7 +5,7 @@ using UnityEngine.Experimental.Rendering.LWRP;
 
 public class LightPulse : MonoBehaviour
 {
-    private Light2D light2D;
+    private UnityEngine.Experimental.Rendering.Universal.Light2D light2D;
     private float baseIntensity;
     private bool high;
 
@@ -14,7 +14,7 @@ public class LightPulse : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        light2D = GetComponent<Light2D>();
+        light2D = GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>();
         baseIntensity = light2D.intensity;
         high = false;
         StartCoroutine(lerpLight(start,end,time));

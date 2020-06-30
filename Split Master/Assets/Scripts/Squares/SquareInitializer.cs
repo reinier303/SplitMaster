@@ -52,7 +52,7 @@ public class SquareInitializer : MonoBehaviour
     {
         InitCubes();
         SpawnCubes();
-        changeCursor.CursorCrosshair();
+        //changeCursor.CursorCrosshair();
     }
 
     private void EnableTutorial()
